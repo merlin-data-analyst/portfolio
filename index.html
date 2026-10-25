@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Merlin Keerthana Data Analyst</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="c"></canvas><div id="bar"></div>
+<nav><div class="logo">🪐<div>Merlin Keerthana<small>Data Analyst</small></div></div>
+<ul><li><a href="#home" class="on">Home</a></li><li><a href="#about">About</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+<a class="btn" href="#contact">Let’s Connect</a></nav>
+<div id="hint">Scroll to fly through space move your mouse to look around</div>
+<main>
+<section id="home"><div class="hero"><div class="rv">
+<p class="mu" style="font-size:1.2rem">Hello, I’m</p><h1><span>Merlin Keerthana</span></h1><div class="sub">Data Analyst</div>
+<p class="mu" style="max-width:480px;font-size:1.05rem">Finding the story behind the data to uncover opportunities for business growth.</p>
+<div class="chips"><span class="chip">🐍 Python</span><span class="chip">🗄 SQL</span><span class="chip">📊 Power BI</span><span class="chip">📗 Excel</span><span class="chip">+ more</span></div>
+<a class="btn f" href="#projects">View My Projects</a> <a class="btn" href="#contact">Get In Touch</a>
+<div class="glass me"><img src="Merlin Keerthana K A.png" alt="Merlin Keerthana"><div><b>Aspring Data Analyst, MCA (Pursuing)</b><div class="mu" style="font-size:.85rem">University of Madras Chennai, India</div><i class="mu" style="font-size:.85rem">“Data is not just numbers, it’s a story waiting to be told.”</i></div></div>
+</div><div></div></div></section>
+
+<section id="about"><div class="rv"><p class="tag">About me</p><h2>Education &amp; <span>Skills</span></h2></div>
+<div class="edu rv" id="edu"></div>
+<div class="skills rv" id="sk"></div></section>
+
+<section id="projects"><div class="rv"><p class="tag">My Projects</p><h2>Explore My <span>Projects</span></h2><p class="mu">Real-world datasets. Practical analysis. Business-focused insights. Click a card to open its full case study.</p></div>
+<div class="grid" id="pg"></div></section>
+
+<section id="contact"><div class="rv"><p class="tag">Contact</p><h2>Get In <span>Touch</span></h2><p class="mu">Have a project, opportunity or just want to say hi? I’d love to hear from you.</p></div>
+
+    <!-- form Connecting -->
+
+<div class="contact rv">
+
+  <!-- LEFT SIDE: Contact Form -->
+  <form class="glass" id="f">
+    <label>Name *</label>
+    <input id="fn" name="user_name" required placeholder="Your name">
+
+    <label>Email *</label>
+    <input id="fe" name="user_email" type="email" required placeholder="you@example.com">
+
+    <label>Phone</label>
+    <input id="fp" name="user_phone" placeholder="+91 …">
+
+    <label>Message *</label>
+    <textarea id="fm" name="message" rows="4" maxlength="500" required placeholder="Type your message…"></textarea>
+
+    <p id="form-status" role="status" aria-live="polite"></p>
+
+    <br><br>
+    <button class="btn f" type="submit">Send Message ➤</button>
+  </form>
+
+  <!-- RIGHT SIDE: Contact Details -->
+  <div class="glass contact-details">
+
+    <!-- Move your existing Email, Phone, Location,
+         LinkedIn, GitHub and download buttons here -->
+<div><div class="ci">✉️<div><b>Email</b><br><a href="mailto:merlink470@gmail.com">merlink470@gmail.com</a></div></div><div class="ci">📞<div><b>Phone</b><br><a href="tel:+917904672450">+91 7904672450</a></div></div><div class="ci">📍<div><b>Location</b><br>Chennai, India</div></div><div class="ci">💼<div><b>LinkedIn</b><br><a href="https://www.linkedin.com/in/merlin-keerthana" target="_blank" rel="noopener">linkedin.com/in/merlin-keerthana</a></div></div><div class="ci">🐙<div><b>GitHub</b><br><a href="https://github.com/merliningithub?tab=repositories">https://github.com/merliningithub</a></div></div><a class="btn" href="file:///D:/Data%20%20Analysis/Resume/Data_Analyst_Merlin_Resume.pdf">Download Resume</a>   <a class="btn" href="https://coursera.org/share/42da46804cbe34c5f8479a881c1686d2">Download Certificate</a> <p class="mu" style="margin-top:18px"><i>“Let’s build something meaningful with data.”</i></p></div></div></section>
+</main><footer>© Website Designed & Developed by Merlin Keerthana | Turning Data Into Direction.</footer>
+<div id="cs"><button class="btn f x" id="cx">✕ Close</button><div class="w" id="cb"></div></div>
+    
+<!-- EmailJS library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+<script>
+  // Initialize EmailJS
+  emailjs.init({
+    publicKey: "PL-3UyhajfOCPqtOw"
+  });
+
+  const contactForm = document.getElementById("f");
+  const formStatus = document.getElementById("form-status");
+
+  // Your existing contact template and new auto-reply template
+  const SERVICE_ID = "service_97xfvbm";
+  const CONTACT_TEMPLATE_ID = "template_id4gcch";
+  const AUTOREPLY_TEMPLATE_ID = "template_05hez5s";
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const button = contactForm.querySelector(
+        'button[type="submit"], input[type="submit"]'
+      );
+
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Sending...";
+      }
+
+      formStatus.textContent = "Sending your message...";
+
+      // First: send the visitor's message to you
+      emailjs.sendForm(
+        SERVICE_ID,
+        CONTACT_TEMPLATE_ID,
+        contactForm
+      )
+      .then(function () {
+
+        // Second: send an automatic reply to the visitor
+        formStatus.textContent =
+          "Message sent! Sending your confirmation email...";
+
+        return emailjs.sendForm(
+          SERVICE_ID,
+          AUTOREPLY_TEMPLATE_ID,
+          contactForm
+        )
+        .then(function () {
+          formStatus.textContent =
+            "Thank you! Your message and confirmation email have been sent.";
+          contactForm.reset();
+        })
+        .catch(function (error) {
+          console.error("Auto-reply error:", error);
+
+          formStatus.textContent =
+            "Your message was sent, but the automatic reply failed.";
+          contactForm.reset();
+        });
+
+      })
+      .catch(function (error) {
+        console.error("EmailJS error:", error);
+
+        formStatus.textContent =
+          "Your message could not be sent. Please check your EmailJS settings.";
+      })
+      .finally(function () {
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Send Message";
+        }
+      });
+    });
+  }
+</script>
+
+
+<script src="script.js"></script></body></html>
